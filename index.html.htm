@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Letter 💌</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #fde2e4;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff3366;
+      animation: floatUp 6s linear infinite;
+      font-size: 20px;
+      user-select: none;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: #ffb3c1;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+      z-index: 2;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #ff758f;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transition: transform 1s ease;
+      transform-origin: top center;
+      z-index: 2;
+    }
+
+    .letter {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      width: 260px;
+      height: 150px;
+      background: white;
+      border-radius: 5px;
+      padding: 20px;
+      box-sizing: border-box;
+      transform: translateY(100%);
+      transition: transform 1s ease 0.3s;
+      z-index: 1;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+    }
+
+    .letter.show {
+      transform: translateY(-30px);
+      opacity: 1;
+    }
+
+    .letter p {
+      font-size: 20px;
+      color: #ff3366;
+      text-align: center;
+      margin: 0;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hearts Background Container -->
+  <div id="heart-container"></div>
+
+  <!-- Envelope -->
+  <div class="envelope" onclick="openEnvelope(this)">
+    <div class="flap"></div>
+    <div class="letter">
+      <p>Can we be friends?</p>
+    </div>
+  </div>
+
+  <script>
+    function openEnvelope(el) {
+      el.classList.toggle('open');
+      setTimeout(() => {
+        const letter = el.querySelector('.letter');
+        letter.classList.toggle('show');
+      }, 300);
+    }
+
+    // Heart animation background
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html><!DOCTYPE HTML>
+
+<html>
+
+<head>
+  <title>Untitled</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
